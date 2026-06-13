@@ -22,7 +22,7 @@ over a private Tailscale network — SSH is never exposed to the public internet
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, system-ui, sans-serif','primaryColor':'#EFF6FF','primaryBorderColor':'#1B75BC','primaryTextColor':'#1F2937','lineColor':'#0D9DBF','fontSize':'14px'}}}%%
-flowchart LR
+flowchart TB
     subgraph WS["Dev Workstation — Arch Linux"]
         direction TB
         BUILD["pnpm build<br/>generates dist/"]:::dev
@@ -46,7 +46,7 @@ flowchart LR
 
     ARC ==>|"push over Tailscale"| RC
     RC ==> TMP
-    RELOAD --> PUB
+    RELOAD ==>|"serve static site"| PUB
 
     classDef dev fill:#EFF6FF,stroke:#1B75BC,stroke-width:1.5px,color:#1F2937;
     classDef edge fill:#0D9DBF,stroke:#0A7D99,stroke-width:1.5px,color:#FFFFFF;
@@ -150,6 +150,91 @@ against Let's Encrypt, using **DNS-01** validation through **Azure DNS**:
   (`AZUREDNS_*` variables) and are never committed to this repo.
 - Renewals are automatic (acme.sh cron); the deploy hook reloads NGINX after a new cert is
   installed.
+
+### DNS-01 Flow
+
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Inter, system-ui, sans-serif','primaryColor':'#EFF6FF','primaryBorderColor':'#1B75BC','primaryTextColor':'#1F2937','lineColor':'#0D9DBF','fontSize':'14px'}}}%%
+flowchart TB
+    subgraph VM["Azure VM"]
+        direction TB
+        ACME["acme.sh<br/>DNS-01 renewer"]:::host
+        NGX["NGINX<br/>loads fullchain + privkey"]:::host
+    end
+
+    LE["Let's Encrypt<br/>ACME CA"]:::external
+    APP["Azure AD app registration<br/>service principal · DNS Zone Contributor"]:::external
+    DNS["Azure DNS zone<br/>resolvetech.biz"]:::external
+
+    ACME ==>|"1 · order cert,<br/>request DNS-01 challenge"| LE
+    LE -.->|"2 · challenge token"| ACME
+    ACME ==>|"3 · auth with AZUREDNS_* creds"| APP
+    APP ==>|"4 · write TXT<br/>_acme-challenge"| DNS
+    LE -.->|"5 · query TXT + validate"| DNS
+    LE ==>|"6 · issue certificate"| ACME
+    ACME -.->|"7 · deploy hook: reload"| NGX
+
+    classDef host fill:#1B75BC,stroke:#0D9DBF,stroke-width:1.5px,color:#FFFFFF;
+    classDef external fill:#FFF7ED,stroke:#F59E0B,stroke-width:1.5px,color:#9A3412;
+```
+
+The challenge is proven entirely over outbound calls and DNS records — Let's Encrypt only ever
+reads a public TXT record, so the VM needs no inbound HTTP for validation.
+
+### Azure DNS Setup (one-time)
+
+To let acme.sh prove domain control via DNS-01, create an Azure AD app registration (service
+principal) scoped to the DNS zone, then point acme.sh at it.
+
+1. Register the app and create a client secret:
+
+   ```bash
+   az ad sp create-for-rbac \
+     --name acme-resolvetech \
+     --skip-assignment
+   # capture appId (AZUREDNS_APPID), password (AZUREDNS_CLIENTSECRET),
+   # and tenant (AZUREDNS_TENANTID) from the output
+   ```
+
+2. Grant the service principal **DNS Zone Contributor** on the zone only (least privilege):
+
+   ```bash
+   az role assignment create \
+     --assignee "<appId>" \
+     --role "DNS Zone Contributor" \
+     --scope "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Network/dnszones/resolvetech.biz"
+   ```
+
+3. Export the credentials in acme.sh's environment on the VM (these are the `AZUREDNS_*`
+   variables; keep them out of the repo):
+
+   ```bash
+   export AZUREDNS_SUBSCRIPTIONID="<subscription-id>"
+   export AZUREDNS_TENANTID="<tenant-id>"
+   export AZUREDNS_APPID="<app-id>"
+   export AZUREDNS_CLIENTSECRET="<client-secret>"
+   ```
+
+4. Issue the single certificate covering all three names:
+
+   ```bash
+   acme.sh --issue --dns dns_azure \
+     -d resolvetech.biz \
+     -d www.resolvetech.biz \
+     -d help.resolvetech.biz
+   ```
+
+5. Install it where NGINX reads, with a reload hook so renewals take effect automatically:
+
+   ```bash
+   acme.sh --install-cert -d resolvetech.biz \
+     --key-file       /etc/nginx/certs/resolvetech.biz/privkey.pem \
+     --fullchain-file /etc/nginx/certs/resolvetech.biz/fullchain.pem \
+     --reloadcmd      "sudo nginx -t && sudo systemctl reload nginx"
+   ```
+
+acme.sh installs a cron entry during setup, so subsequent renewals (and the NGINX reload) run
+unattended.
 
 The certificate paths NGINX reads from:
 
