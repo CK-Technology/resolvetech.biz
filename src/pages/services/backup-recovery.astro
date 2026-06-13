@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Backup & Recovery"
+  description="Resolve Technology provides Veeam backup, disaster recovery planning, and business continuity solutions."
+>
+  <Hero
+    title="Backup & Recovery"
+    subtitle="Business continuity solutions that ensure your data is protected and your business can recover from any disaster."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="text-resolve-blue mb-6">Your Data is Your Business</h2>
+        <p class="text-resolve-text text-lg mb-6">
+          Data loss can happen in many ways — ransomware, hardware failure, human error, or natural disaster. We implement comprehensive backup and recovery solutions to ensure your business can survive any scenario.
+        </p>
+        <p class="text-resolve-text-muted text-lg">
+          Using Veeam and other enterprise-grade tools, we protect your data with verified backups, regular test restores, and documented recovery procedures.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          { title: 'Veeam Backup', description: 'Industry-leading backup solution for servers, workstations, and Microsoft 365 data with verified recovery.' },
+          { title: 'Disaster Recovery', description: 'Comprehensive DR planning with documented procedures and regular testing to ensure business continuity.' },
+          { title: 'Cloud Backup', description: 'Offsite backup replication to secure cloud storage for geographic redundancy and ransomware protection.' },
+          { title: 'Microsoft 365 Backup', description: 'Protection for Exchange, SharePoint, OneDrive, and Teams data beyond Microsoft\'s native retention.' },
+          { title: 'Test Restores', description: 'Regular verification of backups with documented test restores so you know your data is recoverable.' },
+          { title: 'Ransomware Recovery', description: 'Immutable backups and air-gapped copies to ensure recovery even after a ransomware attack.' },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-resolve-blue mb-6">Verified, Not Just Backed Up</h2>
+        <p class="text-resolve-text-muted text-lg">
+          A backup is only valuable if it can be restored. We verify every backup and perform regular test restores so you have confidence your data is protected.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Is Your Data Protected?"
+    description="Schedule a backup assessment to review your current protection and identify gaps in your recovery capabilities."
+  />
+</BaseLayout>

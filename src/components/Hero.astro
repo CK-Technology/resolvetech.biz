@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  showCTA?: boolean;
+  showVeteranBadge?: boolean;
+  size?: 'default' | 'small';
+}
+
+const { title, subtitle, showCTA = true, showVeteranBadge = false, size = 'default' } = Astro.props;
+const isSmall = size === 'small';
+---
+
+<section class:list={[
+  'relative overflow-hidden bg-gradient-to-b from-white to-resolve-bg-soft',
+  isSmall ? 'py-16 md:py-20' : 'py-20 md:py-32'
+]}>
+  <div class="container-narrow relative">
+    <div class="max-w-3xl mx-auto text-center">
+      {showVeteranBadge && (
+        <div class="flex justify-center mb-6">
+          <div class="inline-flex items-center gap-2 bg-resolve-bg-alt px-4 py-2 rounded-full">
+            <img src="/veteran-badge.jpg" alt="U.S. Veteran Owned" class="h-8 w-auto rounded" />
+            <span class="text-sm font-medium text-resolve-blue">U.S. Veteran Owned Business</span>
+          </div>
+        </div>
+      )}
+
+      <h1 class:list={[
+        'font-bold text-resolve-blue mb-6',
+        isSmall ? 'text-3xl md:text-4xl' : 'text-4xl md:text-5xl lg:text-6xl'
+      ]}>
+        {title}
+      </h1>
+
+      {subtitle && (
+        <p class:list={[
+          'text-resolve-text-muted mb-8',
+          isSmall ? 'text-base md:text-lg' : 'text-lg md:text-xl'
+        ]}>
+          {subtitle}
+        </p>
+      )}
+
+      {showCTA && (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="btn-primary">
+            Book Meeting
+          </a>
+          <a href="tel:603-742-1118" class="btn-secondary">
+            Call (603) 742-1118
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

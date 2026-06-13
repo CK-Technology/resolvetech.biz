@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import CTASection from '@components/CTASection.astro';
+import { icons } from '@components/icons';
+
+const services = [
+  {
+    title: 'Managed IT Services',
+    description: 'Our inCheck program provides proactive monitoring, maintenance, and support. Flat-rate or hourly options to fit your business needs.',
+    href: '/services/managed-it',
+    icon: icons.monitor,
+  },
+  {
+    title: 'Cybersecurity',
+    description: 'Comprehensive security solutions including endpoint protection, threat monitoring, email security, and security assessments.',
+    href: '/services/cybersecurity',
+    icon: icons.shield,
+  },
+  {
+    title: 'Cloud Services',
+    description: 'Microsoft 365, Azure infrastructure, cloud migrations, and ongoing management for modern, flexible operations.',
+    href: '/services/cloud-services',
+    icon: icons.cloud,
+  },
+  {
+    title: 'Backup & Recovery',
+    description: 'Business continuity solutions with Veeam backup, disaster recovery planning, and verified restore testing.',
+    href: '/services/backup-recovery',
+    icon: icons.server,
+  },
+  {
+    title: 'Compliance Services',
+    description: 'CMMC 2.0, NIST CSF, and NIST 800-171 alignment for defense contractors, manufacturing, and regulated industries.',
+    href: '/services/compliance',
+    icon: icons.clipboard,
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Explore Resolve Technology's IT services including managed IT, cybersecurity, cloud solutions, backup & recovery, and compliance services."
+>
+  <Hero
+    title="Our Services"
+    subtitle="Comprehensive IT solutions for productivity, security, and compliance."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <h2 class="text-resolve-blue text-center mb-4">Industries We Serve</h2>
+      <p class="text-resolve-text-muted text-center text-lg mb-12 max-w-2xl mx-auto">
+        We specialize in supporting businesses with unique compliance and security requirements.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { title: 'Defense Contractors', desc: 'CMMC compliance and secure infrastructure' },
+          { title: 'Manufacturing', desc: 'OT/IT integration and production continuity' },
+          { title: 'Engineering Firms', desc: 'Secure project data and collaboration' },
+          { title: 'Law Offices', desc: 'Client confidentiality and secure communications' },
+          { title: 'Accounting Firms', desc: 'Financial data security and compliance' },
+          { title: 'Healthcare', desc: 'HIPAA-aware security practices' },
+          { title: 'Dental Practices', desc: 'Patient data protection and practice management' },
+          { title: 'Veterinary Clinics', desc: 'Reliable systems for patient care' },
+          { title: 'Financial Services', desc: 'Data protection and regulatory support' },
+          { title: 'Fencing Companies', desc: 'Field operations and office connectivity' },
+          { title: 'Construction', desc: 'Shop floor and business systems integration' },
+          { title: 'Professional Services', desc: 'Productivity and client management' },
+        ].map((item) => (
+          <div class="card text-center">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Not Sure What You Need?"
+    description="Schedule a free consultation and we'll assess your current setup and recommend the right solutions for your business."
+  />
+</BaseLayout>

@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-resolve-text antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-resolve-blue;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-resolve-blue text-white hover:bg-resolve-teal;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-resolve-blue border-2 border-resolve-blue hover:bg-resolve-bg-soft;
+  }
+
+  .btn-accent {
+    @apply btn bg-resolve-teal text-white hover:bg-resolve-blue;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-alt {
+    @apply section bg-resolve-bg-soft;
+  }
+
+  .section-blue {
+    @apply section bg-resolve-bg-alt;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-sm border border-resolve-border hover:shadow-md hover:border-resolve-teal/30 transition-all duration-200;
+  }
+}

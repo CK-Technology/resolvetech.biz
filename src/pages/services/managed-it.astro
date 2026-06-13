@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Managed IT Services"
+  description="Resolve Technology's inCheck managed IT program provides proactive monitoring, maintenance, and support for your business."
+>
+  <Hero
+    title="Managed IT Services"
+    subtitle="Proactive support that keeps your business running — our inCheck program delivers flat-rate or hourly IT services."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="text-resolve-blue mb-6">The inCheck Program</h2>
+        <p class="text-resolve-text text-lg mb-6">
+          Stop chasing IT problems and start preventing them. Our inCheck managed IT program provides proactive monitoring, regular maintenance, and responsive support — all for a predictable cost.
+        </p>
+        <p class="text-resolve-text-muted text-lg">
+          Whether you need full managed IT support or flexible hourly services, we become an extension of your team, handling everything from day-to-day helpdesk requests to strategic technology planning.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          { title: '24/7 Monitoring', description: 'Continuous monitoring of your systems, networks, and endpoints. We catch issues before they become problems.' },
+          { title: 'Helpdesk Support', description: 'Real people answering your calls and emails. Fast response times with knowledgeable technicians.' },
+          { title: 'Patch Management', description: 'Automated updates and security patches deployed systematically to keep your systems secure.' },
+          { title: 'Endpoint Management', description: 'Complete management of workstations, laptops, and devices with Microsoft Intune MDM.' },
+          { title: 'Backup Monitoring', description: 'Daily verification of your backups with Veeam and regular test restores to ensure data protection.' },
+          { title: 'Vendor Coordination', description: 'We work with your software and hardware vendors so you don\'t have to sit on hold.' },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-resolve-blue mb-6">Flexible Pricing Options</h2>
+        <p class="text-resolve-text-muted text-lg">
+          Our managed IT plans are available as flat-rate monthly agreements or hourly services. No hidden fees, no surprise bills — you know exactly what you're paying.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready for IT That Just Works?"
+    description="Schedule a free consultation to discuss how our inCheck program can simplify your technology and support your business growth."
+  />
+</BaseLayout>

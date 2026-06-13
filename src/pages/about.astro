@@ -1,0 +1,132 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about Resolve Technology LLC, a veteran-owned IT services company in Portsmouth, NH led by Brian Wheeler with 20+ years of enterprise experience."
+>
+  <Hero
+    title="About Resolve Technology"
+    subtitle="Veteran-owned IT services with enterprise expertise and small-business values."
+    showCTA={false}
+    size="small"
+  />
+
+  <!-- Brian's Story -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-resolve-bg-alt px-4 py-2 rounded-full mb-6">
+            <img src="/veteran-badge.jpg" alt="U.S. Veteran Owned" class="h-6 w-auto rounded" />
+            <span class="text-sm font-medium text-resolve-blue">U.S. Veteran Owned</span>
+          </div>
+          <h2 class="text-resolve-blue mb-6">Our Story</h2>
+          <p class="text-resolve-text text-lg mb-6">
+            Portsmouth, N.H.-based Resolve Technology LLC is an information technology services company that provides corporate-level IT management to small and medium-sized businesses.
+          </p>
+          <p class="text-resolve-text-muted text-lg mb-6">
+            Led by <strong>Brian Wheeler</strong>, who has more than 20 years of technology consulting expertise, including brand-name companies such as <strong>Siebel, Putnam Investments, Farmers Insurance, Telecom Italia, and Visa International</strong>.
+          </p>
+          <p class="text-resolve-text-muted text-lg">
+            From configuring desktop computers, to building database servers, to designing phone systems and more, Resolve Technology has the knowledge small businesses need at prices they can afford.
+          </p>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="text-center">
+            <img
+              src="/brian-wheeler.jpg"
+              alt="Brian Wheeler - Founder of Resolve Technology"
+              class="w-64 h-64 object-cover rounded-full shadow-lg mx-auto mb-4"
+            />
+            <h3 class="text-xl font-semibold text-resolve-blue">Brian Wheeler</h3>
+            <p class="text-resolve-text-muted">Founder & Principal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <h2 class="text-resolve-blue text-center mb-12">Our Values</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-resolve-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-resolve-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-resolve-blue mb-3">Security First</h3>
+          <p class="text-resolve-text-muted">
+            Every solution we deploy is built with security as a foundation. Your data and systems deserve real protection.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-resolve-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-resolve-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-resolve-blue mb-3">Veteran Discipline</h3>
+          <p class="text-resolve-text-muted">
+            Military service instilled values of discipline, attention to detail, and commitment to mission success that we bring to every client engagement.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-resolve-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-resolve-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-resolve-blue mb-3">Personal Service</h3>
+          <p class="text-resolve-text-muted">
+            You'll work directly with our team — no ticket queues, no runaround. We know your business, not just your ticket number.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <img
+            src="/portsmouth-harbor.jpg"
+            alt="Portsmouth Harbor at sunset"
+            class="w-full rounded-xl shadow-lg"
+          />
+        </div>
+        <div>
+          <h2 class="text-resolve-blue mb-6">Serving Seacoast NH & New England</h2>
+          <p class="text-resolve-text-muted text-lg mb-6">
+            Based in Portsmouth, New Hampshire, we serve businesses throughout the Seacoast region and New England, including Massachusetts and Maine.
+          </p>
+          <p class="text-resolve-text-muted text-lg mb-8">
+            Our local presence means faster response times and a deeper understanding of the regional business community.
+          </p>
+          <address class="not-italic text-resolve-text text-lg bg-resolve-bg-alt p-6 rounded-lg">
+            <strong class="text-resolve-blue">Our Office</strong><br />
+            One New Hampshire Ave., Suite 125<br />
+            Portsmouth, NH 03801
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let's Talk About Your IT Needs"
+    description="Schedule a free consultation with Brian to discuss how Resolve Technology can support your business."
+  />
+</BaseLayout>

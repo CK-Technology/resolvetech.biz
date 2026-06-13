@@ -1,0 +1,24 @@
+{
+  "name": "resolvetech",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev --port 4322",
+    "build": "astro build",
+    "preview": "astro preview --port 4322",
+    "astro": "astro"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "alpinejs": "^3.14.1",
+    "astro": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/alpinejs": "^3.13.10",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4"
+  }
+}

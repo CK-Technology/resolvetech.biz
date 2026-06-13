@@ -1,0 +1,95 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-resolve-border" x-data="{ mobileOpen: false }">
+  <div class="container-narrow">
+    <nav class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <img src="/logo.jpg" alt="Resolve Technology" class="h-10 md:h-12 w-auto" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'text-sm font-medium hover:text-resolve-blue',
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'text-resolve-blue'
+                : 'text-resolve-text',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href="/contact" class="btn-primary text-sm">
+          Book Meeting
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="md:hidden p-2 text-resolve-text hover:text-resolve-blue"
+        @click="mobileOpen = !mobileOpen"
+        :aria-expanded="mobileOpen"
+        aria-label="Toggle menu"
+      >
+        <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div
+      x-show="mobileOpen"
+      x-cloak
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden py-4 border-t border-resolve-border"
+    >
+      <div class="flex flex-col gap-4">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'text-base font-medium hover:text-resolve-blue py-2',
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'text-resolve-blue'
+                : 'text-resolve-text',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href="/contact" class="btn-primary text-center mt-2">
+          Book Meeting
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>

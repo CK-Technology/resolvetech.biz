@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+.output/
+
+# Astro
+.astro/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Build archives
+*.tar.gz
+
+# Internal / working files (not for public repo)
+tasks/
+archive/
+
+# Raw source assets — not used by the build (public/ holds the live images).
+# Kept local only; contains originals and internal PDFs (invoices, etc.).
+assets/

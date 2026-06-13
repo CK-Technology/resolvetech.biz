@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Cybersecurity"
+  description="Resolve Technology provides comprehensive cybersecurity services including endpoint protection, threat monitoring, and security assessments."
+>
+  <Hero
+    title="Cybersecurity Services"
+    subtitle="Comprehensive security solutions to protect your business from evolving threats."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="text-resolve-blue mb-6">Security as a Foundation</h2>
+        <p class="text-resolve-text text-lg mb-6">
+          Cybersecurity isn't optional anymore. We build security into everything we do — from network design to endpoint protection to user training. Your business deserves real protection, not just checkboxes.
+        </p>
+        <p class="text-resolve-text-muted text-lg">
+          Our approach combines proactive defense, continuous monitoring, and rapid response to keep your business safe from evolving threats.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          { title: 'Endpoint Protection', description: 'Advanced endpoint detection and response (EDR) to protect workstations and servers from threats.' },
+          { title: 'Firewall Management', description: 'FortiGate firewall deployment and management with VPN, segmentation, and threat prevention.' },
+          { title: 'Email Security', description: 'Spam filtering, phishing protection, and email encryption to secure your communications.' },
+          { title: 'Security Monitoring', description: 'Continuous monitoring for suspicious activity with alerting and incident response.' },
+          { title: 'Security Assessments', description: 'Vulnerability assessments and security reviews to identify and address gaps in your defenses.' },
+          { title: 'User Training', description: 'Security awareness training to help your team recognize and avoid threats.' },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-resolve-blue mb-6">Defense in Depth</h2>
+        <p class="text-resolve-text-muted text-lg">
+          We implement layered security controls so that no single point of failure can compromise your business. From the network edge to individual endpoints, every layer is protected.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Concerned About Your Security Posture?"
+    description="Schedule a security assessment to review your current defenses and identify opportunities to strengthen your security."
+  />
+</BaseLayout>

@@ -1,0 +1,420 @@
+---
+// Help page for help.resolvetech.biz
+const supportPhone = '(603) 742-1118';
+const supportEmail = 'support@resolvetech.biz';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Resolve Technology client support portal - contact information and support resources" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Support | Resolve Technology</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+      :root {
+        --resolve-blue: #1B75BC;
+        --resolve-teal: #0D9DBF;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #f8fafc;
+        min-height: 100vh;
+        color: #334155;
+        line-height: 1.6;
+      }
+
+      .container { max-width: 640px; margin: 0 auto; padding: 2rem 1rem; }
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 2rem 0;
+        margin-bottom: 1rem;
+      }
+
+      .logo { height: 52px; width: auto; }
+
+      .header-subtitle {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Navigation */
+      .nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .nav a {
+        padding: 0.5rem 1.25rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #64748b;
+        background: white;
+        border: 1px solid #e2e8f0;
+        transition: all 0.15s;
+      }
+
+      .nav a:hover, .nav a.active {
+        color: var(--resolve-blue);
+        border-color: var(--resolve-blue);
+        background: #eff6ff;
+      }
+
+      /* Client Banner */
+      .welcome-banner {
+        background: linear-gradient(135deg, var(--resolve-blue) 0%, var(--resolve-teal) 100%);
+        border-radius: 12px;
+        padding: 1.25rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 1.1rem;
+      }
+
+      .welcome-banner strong { font-weight: 600; }
+
+      /* Cards */
+      .card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--resolve-blue), var(--resolve-teal));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .card-icon svg {
+        width: 20px;
+        height: 20px;
+        color: white;
+      }
+
+      .card-header h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1e293b;
+      }
+
+      .card-header p {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin-top: 0.125rem;
+      }
+
+      /* Contact Methods */
+      .contact-method {
+        padding: 1rem 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .contact-method:last-child { border-bottom: none; padding-bottom: 0; }
+      .contact-method:first-of-type { padding-top: 0; }
+
+      .contact-method h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-method h3 a {
+        color: var(--resolve-blue);
+        text-decoration: none;
+      }
+
+      .contact-method h3 a:hover { text-decoration: underline; }
+
+      .contact-method > p {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 0.75rem;
+      }
+
+      .contact-method ul {
+        list-style: none;
+        font-size: 0.8rem;
+        color: #64748b;
+      }
+
+      .contact-method ul li {
+        padding: 0.25rem 0;
+        padding-left: 1.25rem;
+        position: relative;
+      }
+
+      .contact-method ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.55rem;
+        width: 5px;
+        height: 5px;
+        background: var(--resolve-teal);
+        border-radius: 50%;
+      }
+
+      /* Tips */
+      .tip-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .tip-item:last-child { border-bottom: none; }
+      .tip-item:first-child { padding-top: 0; }
+
+      .tip-icon {
+        width: 24px;
+        height: 24px;
+        background: #eff6ff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 0.125rem;
+      }
+
+      .tip-icon svg {
+        width: 14px;
+        height: 14px;
+        color: var(--resolve-blue);
+      }
+
+      .tip-item p {
+        font-size: 0.875rem;
+        color: #475569;
+      }
+
+      .tip-item strong {
+        color: #1e293b;
+        font-weight: 500;
+      }
+
+      /* PDF Button */
+      .pdf-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        color: #475569;
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.15s;
+      }
+
+      .pdf-btn:hover {
+        border-color: var(--resolve-blue);
+        color: var(--resolve-blue);
+      }
+
+      .pdf-btn svg { width: 18px; height: 18px; }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem 0 1rem;
+        margin-top: 1rem;
+      }
+
+      .veteran-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 0.75rem 1.25rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .veteran-badge img { height: 32px; width: auto; border-radius: 4px; }
+      .veteran-badge span { color: #64748b; font-size: 0.8rem; font-weight: 500; }
+
+      .footer-text {
+        color: #94a3b8;
+        font-size: 0.75rem;
+      }
+
+      .footer-text a { color: var(--resolve-blue); text-decoration: none; }
+      .footer-text a:hover { text-decoration: underline; }
+
+      @media (max-width: 500px) {
+        .container { padding: 1rem; }
+        .card { padding: 1.25rem; }
+        .nav { flex-direction: column; }
+        .nav a { text-align: center; }
+      }
+
+      [x-cloak] { display: none !important; }
+    </style>
+  </head>
+
+  <body x-data="{ clientId: new URLSearchParams(window.location.search).get('client') }">
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <img src="/logo.jpg" alt="Resolve Technology" class="logo" />
+        <p class="header-subtitle">Client Support Portal</p>
+      </header>
+
+      <!-- Navigation -->
+      <nav class="nav">
+        <a href="#contact" class="active">Contact</a>
+        <a href="/contact-info.pdf" target="_blank">Download PDF</a>
+      </nav>
+
+      <!-- Client Banner -->
+      <div x-show="clientId" x-cloak class="welcome-banner">
+        Welcome, <strong x-text="clientId"></strong>. We're here to help.
+      </div>
+
+      <!-- Contact Card -->
+      <section id="contact" class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <h2>Contact Support</h2>
+            <p>Choose the method that works best for your situation</p>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <h3>Call <a href="tel:603-742-1118">{supportPhone}</a></h3>
+          <p>Best for urgent issues or complex problems</p>
+          <ul>
+            <li>Fastest way to reach us for immediate support</li>
+            <li>Receptionist available Mon-Fri, 9am-5pm</li>
+            <li>After hours, leave a voicemail or email</li>
+          </ul>
+        </div>
+
+        <div class="contact-method">
+          <h3>Email <a href={`mailto:${supportEmail}`}>{supportEmail}</a></h3>
+          <p>Creates a ticket in our support system</p>
+          <ul>
+            <li>Use a clear, descriptive subject line</li>
+            <li>Attach screenshots if helpful</li>
+            <li>Let us know if you'd prefer a callback</li>
+            <li>Tell us if we can connect to your computer remotely</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tips Card -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <div>
+            <h2>Tips for Faster Support</h2>
+          </div>
+        </div>
+
+        <div class="tip-item">
+          <div class="tip-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p><strong>Schedule in advance</strong> when possible — new hires, equipment, training</p>
+        </div>
+
+        <div class="tip-item">
+          <div class="tip-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <p><strong>Tell us the impact</strong> — helps us prioritize and respond appropriately</p>
+        </div>
+
+        <div class="tip-item">
+          <div class="tip-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p><strong>Use official channels</strong> — don't email employees directly for new issues</p>
+        </div>
+      </section>
+
+      <!-- PDF Download -->
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <a href="/contact-info.pdf" class="pdf-btn" target="_blank">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Download Contact Info PDF
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="veteran-badge">
+          <img src="/veteran-badge.jpg" alt="U.S. Veteran Owned" />
+          <span>U.S. Veteran Owned Business</span>
+        </div>
+        <p class="footer-text">
+          &copy; {new Date().getFullYear()} Resolve Technology LLC &middot;
+          <a href="https://resolvetech.biz">resolvetech.biz</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

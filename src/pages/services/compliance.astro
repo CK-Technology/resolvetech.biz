@@ -1,0 +1,177 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Compliance Services"
+  description="Resolve Technology provides CMMC 2.0, NIST CSF, and NIST 800-171 compliance services for defense contractors and regulated industries."
+>
+  <Hero
+    title="Compliance Services"
+    subtitle="CMMC 2.0, NIST CSF, and NIST 800-171 alignment for defense contractors and regulated industries."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="text-resolve-blue mb-6">Security-First IT Aligned with Industry Standards</h2>
+        <p class="text-resolve-text text-lg mb-6">
+          We don't just provide IT support — we deliver structured, standards-based security aligned with recognized compliance frameworks. Essential for organizations working with the Department of Defense, handling Controlled Unclassified Information (CUI), or operating in regulated industries.
+        </p>
+        <p class="text-resolve-text-muted text-lg">
+          Our compliance services help you assess current risk, implement required controls, maintain compliance over time, and prepare for audits and certification.
+        </p>
+      </div>
+
+      <!-- CMMC Section -->
+      <div class="bg-resolve-bg-alt rounded-2xl overflow-hidden mb-12">
+        <div class="relative h-48 md:h-56">
+          <img
+            src="/cmmc-defense.png"
+            alt="CMMC Requirements for Defense Contractors"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-2xl font-bold text-white">CMMC 2.0</h3>
+            <p class="text-white/80 text-sm">Cybersecurity Maturity Model Certification</p>
+          </div>
+        </div>
+        <div class="p-8">
+          <p class="text-resolve-text-muted mb-6">
+            CMMC 2.0 is the Department of Defense framework required for contractors handling Federal Contract Information (FCI) and Controlled Unclassified Information (CUI).
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg p-6">
+              <h4 class="font-semibold text-resolve-blue mb-2">Level 1 — Foundational</h4>
+              <p class="text-sm text-resolve-text-muted">Basic cyber hygiene, 17 practices, annual self-assessment</p>
+            </div>
+            <div class="bg-white rounded-lg p-6">
+              <h4 class="font-semibold text-resolve-blue mb-2">Level 2 — Advanced</h4>
+              <p class="text-sm text-resolve-text-muted">110 controls (NIST 800-171), required for CUI handling</p>
+            </div>
+            <div class="bg-white rounded-lg p-6">
+              <h4 class="font-semibold text-resolve-blue mb-2">Level 3 — Expert</h4>
+              <p class="text-sm text-resolve-text-muted">Advanced threat protection based on NIST 800-172</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          { title: 'Gap Assessment', description: 'Comprehensive review of your current security posture against CMMC, NIST CSF, or NIST 800-171 requirements.' },
+          { title: 'Control Implementation', description: 'Deploy required security controls including access management, MFA, endpoint protection, and network segmentation.' },
+          { title: 'Documentation Support', description: 'System Security Plans (SSP), policies, procedures, and audit-ready documentation.' },
+          { title: 'Enclave Strategy', description: 'Scoped compliance approach to isolate CUI systems and reduce complexity and cost.' },
+          { title: 'Continuous Monitoring', description: 'Ongoing monitoring, logging, and alerting to maintain compliance over time.' },
+          { title: 'Audit Preparation', description: 'Support for self-assessments and third-party audits with documentation and evidence gathering.' },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NIST CSF Section -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="flex justify-center">
+          <img
+            src="/nist-framework.png"
+            alt="NIST Cybersecurity Framework"
+            class="w-full max-w-md"
+          />
+        </div>
+        <div>
+          <h2 class="text-resolve-blue mb-6">NIST Cybersecurity Framework</h2>
+          <p class="text-resolve-text-muted text-lg mb-6">
+            The NIST Cybersecurity Framework (CSF) provides a structured approach to managing cybersecurity risk. We align our security practices with the six core functions:
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { name: 'Govern', desc: 'Establish cybersecurity strategy and oversight' },
+              { name: 'Identify', desc: 'Understand assets, risks, and vulnerabilities' },
+              { name: 'Protect', desc: 'Implement safeguards and access controls' },
+              { name: 'Detect', desc: 'Monitor for threats and anomalies' },
+              { name: 'Respond', desc: 'Take action when incidents occur' },
+              { name: 'Recover', desc: 'Restore operations after an incident' },
+            ].map((item) => (
+              <div class="bg-white p-4 rounded-lg">
+                <h4 class="font-semibold text-resolve-blue text-sm">{item.name}</h4>
+                <p class="text-xs text-resolve-text-muted">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zero Trust -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-resolve-blue mb-6">Zero Trust Architecture</h2>
+          <p class="text-resolve-text-muted text-lg mb-6">
+            Modern compliance frameworks increasingly require Zero Trust principles: never trust, always verify. We implement Zero Trust architecture through:
+          </p>
+          <ul class="space-y-3">
+            {[
+              'Identity verification with Azure Entra ID and MFA',
+              'Conditional Access policies based on user, device, and location',
+              'Endpoint compliance enforcement with Microsoft Intune',
+              'Network segmentation and micro-segmentation',
+              'Least privilege access controls',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-resolve-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-resolve-text">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-xl font-semibold text-resolve-blue mb-4">Target Industries</h3>
+          <ul class="space-y-3">
+            {[
+              'Defense Contractors (DoD)',
+              'Manufacturing',
+              'Engineering Firms',
+              'Government Contractors',
+              'Healthcare & Dental',
+              'Financial Services',
+              'Law Offices',
+              'Accounting Firms',
+            ].map((industry) => (
+              <li class="flex items-center gap-3 text-resolve-text">
+                <svg class="w-5 h-5 text-resolve-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                {industry}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Address Your Compliance Requirements?"
+    description="Schedule a compliance assessment to understand your current posture and develop a roadmap to meet your requirements."
+  />
+</BaseLayout>

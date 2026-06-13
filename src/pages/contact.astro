@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import ContactForm from '@components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Resolve Technology for IT services, cybersecurity, and compliance support in Portsmouth, NH and New England."
+>
+  <Hero
+    title="Contact Us"
+    subtitle="Schedule a free consultation to discuss your IT needs."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <h2 class="text-resolve-blue mb-6">Send Us a Message</h2>
+          <p class="text-resolve-text-muted mb-8">
+            Fill out the form below and we'll get back to you within one business day. Or call us directly to speak with Brian.
+          </p>
+          <ContactForm />
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-resolve-blue mb-6">Contact Info</h2>
+
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-sm font-semibold text-resolve-text-muted uppercase tracking-wide mb-2">Phone</h3>
+              <a href="tel:603-742-1118" class="text-lg text-resolve-blue hover:text-resolve-teal">
+                (603) 742-1118
+              </a>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-resolve-text-muted uppercase tracking-wide mb-2">Email</h3>
+              <a href="mailto:support@resolvetech.biz" class="text-lg text-resolve-blue hover:text-resolve-teal">
+                support@resolvetech.biz
+              </a>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-resolve-text-muted uppercase tracking-wide mb-2">Address</h3>
+              <address class="not-italic text-resolve-text">
+                One New Hampshire Ave.<br />
+                Suite 125<br />
+                Portsmouth, NH 03801
+              </address>
+            </div>
+
+            <hr class="border-resolve-border" />
+
+            <div>
+              <h3 class="text-sm font-semibold text-resolve-text-muted uppercase tracking-wide mb-2">Hours</h3>
+              <p class="text-resolve-text">Monday – Friday, 9am – 5pm</p>
+              <p class="text-resolve-text-muted text-sm">Emergency support available for managed clients</p>
+            </div>
+          </div>
+
+          <!-- Veteran Badge -->
+          <div class="mt-8 p-6 bg-resolve-bg-alt rounded-xl">
+            <div class="flex items-center gap-4">
+              <img src="/veteran-badge.jpg" alt="U.S. Veteran Owned" class="h-16 w-auto rounded" />
+              <div>
+                <h3 class="font-semibold text-resolve-blue">Veteran Owned</h3>
+                <p class="text-resolve-text-muted text-sm">Proudly serving New England businesses</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

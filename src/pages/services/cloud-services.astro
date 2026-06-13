@@ -1,0 +1,63 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTASection from '@components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Cloud Services"
+  description="Resolve Technology provides Microsoft 365, Azure infrastructure, cloud migrations, and ongoing cloud management services."
+>
+  <Hero
+    title="Cloud Services"
+    subtitle="Microsoft 365, Azure infrastructure, and cloud solutions for modern business operations."
+    showCTA={false}
+    size="small"
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto mb-16">
+        <h2 class="text-resolve-blue mb-6">Modern Infrastructure, Practical Approach</h2>
+        <p class="text-resolve-text text-lg mb-6">
+          Cloud doesn't have to be complicated. We help businesses move to, optimize, and manage cloud infrastructure with a focus on reliability, security, and cost-effectiveness.
+        </p>
+        <p class="text-resolve-text-muted text-lg">
+          As a Microsoft partner, we specialize in Microsoft 365 and Azure solutions designed for your actual business needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {[
+          { title: 'Microsoft 365', description: 'Complete M365 deployment, management, security hardening, and license optimization for your team.' },
+          { title: 'Azure Infrastructure', description: 'Cloud servers, storage, and services on Microsoft Azure with ongoing management and support.' },
+          { title: 'Cloud Migration', description: 'Strategic migration planning and execution to move your workloads to the cloud with minimal disruption.' },
+          { title: 'Intune MDM', description: 'Mobile device management with Microsoft Intune for secure BYOD and company device policies.' },
+          { title: 'Teams & Collaboration', description: 'Microsoft Teams deployment and optimization for effective team communication and collaboration.' },
+          { title: 'Hybrid Solutions', description: 'Mix of on-premises and cloud infrastructure designed for your specific requirements.' },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-resolve-blue mb-2">{item.title}</h3>
+            <p class="text-resolve-text-muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-resolve-blue mb-6">Security Built In</h2>
+        <p class="text-resolve-text-muted text-lg">
+          We implement Microsoft 365 security best practices including MFA, Conditional Access, and Defender for Office 365 to protect your cloud environment without frustrating your users.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Move to the Cloud?"
+    description="Schedule a consultation to discuss your cloud strategy and how we can help you get the most from Microsoft 365 and Azure."
+  />
+</BaseLayout>

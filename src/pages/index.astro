@@ -1,0 +1,222 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import FeatureGrid from '@components/FeatureGrid.astro';
+import CTASection from '@components/CTASection.astro';
+import { icons } from '@components/icons';
+
+const services = [
+  {
+    title: 'Managed IT Services',
+    description: 'Proactive monitoring, maintenance, and support with our inCheck program. Flat-rate or hourly IT services that keep your business running.',
+    href: '/services/managed-it',
+    icon: icons.monitor,
+  },
+  {
+    title: 'Cybersecurity',
+    description: 'Comprehensive security solutions including endpoint protection, threat monitoring, and security assessments to protect your business.',
+    href: '/services/cybersecurity',
+    icon: icons.shield,
+  },
+  {
+    title: 'Cloud Services',
+    description: 'Microsoft 365, Azure infrastructure, cloud migrations, and ongoing management for modern, flexible business operations.',
+    href: '/services/cloud-services',
+    icon: icons.cloud,
+  },
+  {
+    title: 'Backup & Recovery',
+    description: 'Business continuity solutions with Veeam backup, disaster recovery planning, and verified restore testing.',
+    href: '/services/backup-recovery',
+    icon: icons.server,
+  },
+  {
+    title: 'Compliance Services',
+    description: 'CMMC 2.0, NIST CSF, and NIST 800-171 alignment for defense contractors, manufacturing, and regulated industries.',
+    href: '/services/compliance',
+    icon: icons.clipboard,
+  },
+];
+
+const trustFeatures = [
+  {
+    icon: icons.veteran,
+    title: 'Veteran Owned',
+    description: 'U.S. Veteran-owned business with military discipline and values.',
+  },
+  {
+    icon: icons.clock,
+    title: '20+ Years Experience',
+    description: 'Enterprise expertise from Visa, Siebel, and Putnam Investments.',
+  },
+  {
+    icon: icons.mapPin,
+    title: 'Local Presence',
+    description: 'Based in Portsmouth, NH serving Seacoast & New England.',
+  },
+  {
+    icon: icons.lock,
+    title: 'Security-First',
+    description: 'CMMC and NIST-aligned practices built into everything we do.',
+  },
+];
+
+const compliancePoints = [
+  'CMMC 2.0 readiness for DoD contractors',
+  'NIST Cybersecurity Framework (CSF) alignment',
+  'NIST SP 800-171 compliance support',
+  'Zero Trust architecture implementation',
+  'Microsoft 365 security hardening',
+];
+
+const whyUsPoints = [
+  'Veteran-owned with military discipline and attention to detail',
+  'Enterprise-level expertise at SMB-friendly pricing',
+  'Local Portsmouth presence with personalized service',
+  'Security and compliance built into every solution',
+  'Proactive approach — we prevent problems, not just fix them',
+];
+---
+
+<BaseLayout title="Productivity and Security for Your Business">
+  <!-- Hero -->
+  <Hero
+    title="Productivity and Security for Your Business"
+    subtitle="Corporate-level IT management, cybersecurity, and compliance services for small and medium-sized businesses in Seacoast NH and New England."
+    showVeteranBadge={true}
+  />
+
+  <!-- Trust Bar -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <FeatureGrid features={trustFeatures} columns={4} />
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <h2 class="text-resolve-blue mb-4">Our Services</h2>
+        <p class="text-resolve-text-muted text-lg max-w-2xl mx-auto">
+          Comprehensive IT solutions designed to keep your business secure, productive, and compliant.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/services" class="btn-secondary">
+          View All Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Highlight -->
+  <section class="section-blue">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-resolve-blue/10 px-4 py-2 rounded-full mb-6">
+            <Fragment set:html={icons.clipboard} />
+            <span class="text-sm font-medium text-resolve-blue">Compliance Expertise</span>
+          </div>
+          <h2 class="text-resolve-blue mb-6">Security & Compliance Built In</h2>
+          <p class="text-resolve-text-muted text-lg mb-8">
+            We don't just provide IT support — we deliver structured, standards-based security aligned with recognized compliance frameworks. Essential for defense contractors, manufacturing, and regulated industries.
+          </p>
+          <ul class="space-y-4 mb-8">
+            {compliancePoints.map((point) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-resolve-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-resolve-text">{point}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/services/compliance" class="btn-primary">
+            Learn About Compliance Services
+          </a>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+          <h3 class="text-xl font-semibold text-resolve-blue mb-4">Industries We Serve</h3>
+          <ul class="grid grid-cols-2 gap-2">
+            {['Defense Contractors', 'Manufacturing', 'Engineering', 'Law Offices', 'Accounting', 'Healthcare', 'Dental & Veterinary', 'Financial Services', 'Trades & Construction'].map((industry) => (
+              <li class="flex items-center gap-2 text-resolve-text text-sm">
+                <svg class="w-4 h-4 text-resolve-teal flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                {industry}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Resolve Technology -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1 flex justify-center">
+          <div class="flex flex-col items-center gap-6">
+            <img
+              src="/logo-banner.jpg"
+              alt="Resolve Technology"
+              class="w-full max-w-md h-auto rounded-lg shadow-lg"
+            />
+            <div class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-3">
+              <img src="/veteran-badge.jpg" alt="U.S. Veteran Owned" class="h-14 w-auto" />
+              <span class="text-sm font-medium text-resolve-blue">U.S. Veteran Owned</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <h2 class="text-resolve-blue mb-6">Why Resolve Technology?</h2>
+          <p class="text-resolve-text-muted text-lg mb-8">
+            Led by Brian Wheeler with 20+ years of technology consulting expertise from brand-name companies like Siebel, Putnam Investments, Visa International, and Telecom Italia.
+          </p>
+          <ul class="space-y-4">
+            {whyUsPoints.map((point) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-resolve-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-resolve-text">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Logos -->
+  <section class="section-alt">
+    <div class="container-narrow">
+      <p class="text-center text-resolve-text-muted text-sm mb-8">Proud member of:</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <img src="/partners/portsmouth-chamber-logo.png" alt="Portsmouth Chamber of Commerce" class="h-12 w-auto grayscale hover:grayscale-0 transition-all" />
+        <img src="/partners/GreaterPortsmouth.png" alt="Greater Portsmouth Chamber" class="h-10 w-auto grayscale hover:grayscale-0 transition-all" />
+        <img src="/partners/mvcc-logo.png" alt="Merrimack Valley Chamber of Commerce" class="h-12 w-auto grayscale hover:grayscale-0 transition-all" />
+        <img src="/partners/veteran-owned.png" alt="Veteran Owned Business" class="h-14 w-auto grayscale hover:grayscale-0 transition-all" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTASection
+    title="Ready to Discuss Your IT Needs?"
+    description="Schedule a free consultation with Brian to discuss how Resolve Technology can help your business with reliable IT support, security, and compliance."
+  />
+</BaseLayout>
